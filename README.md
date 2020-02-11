@@ -31,3 +31,5 @@ Microsft Visual Studios 2019: C
 - or(6): Does a bitwise Or of two registers storing data onto first register | Or r# r# r#
 - rightshift(7): Right shifts register value bitwise by the number written after | rightshift r# #
 - subtract(5): Subtracts two registers together and stores to the first register | sub r# r# r#
+
+More Documentation can be found under the "Simple Instruction Architecture" doc.
