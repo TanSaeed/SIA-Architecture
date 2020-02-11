@@ -1,0 +1,190 @@
+Zae Saeed
+404
+Unit Test Case Assignment
+
+
+1. Add-----------------
+addimmediate r1 10 (91 0A)
+addimmediate r2 5 (92 05)
+add r1 r2 r1 (11 21) /
+interrupt 0 (8000)
+
+R1 == 15
+R2 == 5
+
+2. Addimmediate---------------------
+addimmediate r1 10 (91 0A) /
+interrupt 0 (8000)
+
+R1 == 10
+
+3. And---------------------------
+addimmediate r1 10 (91 0A)
+addimmediate r2 6 (92 06)
+and r1 r2 r1 (21 21) /
+interrupt 0 (8000)
+
+R1 == 2
+R2 == 6
+
+4. Branchifequal--------------------
+addimmediate r1 10 (91 0A)
+addimmediate r2 10 (92 0A)
+branchifequal r1 r2 6 (A1 20 00 06) /
+halt(0)
+interrupt 0 (8000)
+
+R1 == 10
+R2 == 10
+
+5. Branchifless-----------------------
+addimmediate r1 9 (91 09)
+addimmediate r2 10 (92 0A)
+branchifless r1 r2 6 (B1 20 00 06) /
+halt(0)
+interrupt 0 (8000)
+
+R1 == 9
+R2 == 10
+
+6. Divide--------------------------
+addimmediate r1 10 (91 0A)
+addimmediate r2 5 (92 05)
+divide r1 r2 r1 (31 21) /
+interrupt 0 (8000)
+
+R1 == 2
+R2 == 5
+
+7. Halt--------------------
+halt(0000)
+addimmediate r1 10 (91 0A)
+interrupt 0 (8000)
+
+*Should not excute add or interrupt*
+
+8. Interrupt----------------------
+addimmediate r1 10 (91 0A)
+interrupt 1 (80 00 00 01)
+
+R1 == 10
+
+9. Iterateover-----------------
+addimmediate r1 50 (91 32)
+addimmediate r2 5 (92 05)
+addimmediate r3 2 (93 02)
+store r2 r1 0 (F2 10)
+store r3 r2 
+add r1 r3 r1 (11 31)
+add r1 r3 r1 (11 31)
+store r3 r1 0 (F3 10)
+sub r1 r1 r1 (51 11)
+addimmediate r1 50 (91 32)
+load r2 r1 0 (E2 10)
+interupt 0 (8000)
+iterateover r1 4 4 (D1 04 00 04)
+
+First print
+R2 == 5
+Second run print
+R2 == 2
+
+10. Jump-------------------------- (assuming we start at 1)
+addimmediate r1 10 (91 0A)
+jump 4 (C0 00 00 04)
+halt(0)
+interupt 0 (8000)
+
+R1 == 10
+
+11. Leftshift-------------------
+addimmediate r1 5 (91 05)
+leftshift r1 01 (71 01)
+interupt 0 (8000)
+
+R1 == 10
+
+12. Load--------------------------
+addimmediate r1 50 (91 32)
+addimmediate r2 5 (92 05)
+addimmediate r3 2 (93 02)
+store r2 r1 0 (F2 10)
+load r3 r1 0 (E3 10)
+interupt 0 (8000)
+
+R1 == 50
+R2 == 5
+R3 == 5
+
+13. Multiply------------------------
+addimmediate r1 10 (91 0A)
+addimmediate r2 5 (92 05)
+addimmediate r3 0 (93 00)
+multiply r1 r2 r3 (41 23)
+interupt 0 (8000)
+
+R1 == 10
+R2 == 5
+R3 == 50
+
+14. Or-----------------------------------
+addimmediate r1 2 (91 02)
+addimmediate r2 1 (92 01)
+addimmediate r3 0 (93 00)
+or r1 r2 r3 (61 23)
+interupt 0 (8000)
+
+R1 == 2
+R2 == 1
+R3 == 3
+
+15. Rightshift---------------------
+addimmediate r1 10 (91 0A)
+rightshift r1 01 (71 21)
+interupt 0 (8000)
+
+R1 == 5
+
+16. Store--------------------------(used the same as load)
+addimmediate r1 50 (91 32)
+addimmediate r2 5 (92 05)
+addimmediate r3 2 (93 02)
+store r2 r1 0 (F2 10)
+load r3 r1 0 (E3 10)
+interupt 0 (8000)
+
+R1 == 50
+R2 == 5
+R3 == 5
+
+17.Subtract---------------/
+addimmediate r1 10 (91 0A)
+addimmediate r2 2 (92 02)
+addimmediate r3 0 (93 00)
+subtract r1 r2 r3 (51 23)
+
+interupt 0 (8000)
+
+R1 == 10
+R2 == 2
+R3 == 8
+
+------------------------------------------------------------
+TESTS:
+1. add r1 r2 r1 (11 21) 
+2. addimmediate r1 10 (91 0A)
+3. and r1 r2 r1 (21 21)
+4. branchifequal r1 r2 6 (A1 20 00 06)
+5. branchifless r1 r2 6 (B1 20 00 06)
+6. divide r1 r2 r1 (31 21)
+7. halt(0000)
+8. interrupt 1 (80 01)
+9. iterateover r1 4 4 (D1 04 00 06)
+10. jump 4 (C0 00 00 04)
+11. leftshift r1 01 (71 01)
+12. load r3 r1 0 (E3 10)
+13. multiply r1 r2 r3 (41 23)
+14. or r1 r2 r3 (61 23)
+15. rightshift r1 01 (71 21)
+16. store r2 r1 0 (F2 10)
+17. subtract r1 r2 r3 (51 23)

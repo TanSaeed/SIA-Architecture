@@ -1,0 +1,17 @@
+add r1 r2 r1
+addimmediate r1 10
+and r1 r2 r1
+branchifequal r1 r2 6
+branchifless r1 r2 6
+divide r1 r2 r1
+halt
+interrupt 1
+iterateover r1 4 6
+jump 4
+leftshift r1 01
+load r3 r1 0
+multiply r1 r2 r3
+or r1 r2 r3
+rightshift r1 01
+store r2 r1 0
+subtract r1 r2 r3
